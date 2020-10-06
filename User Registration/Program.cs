@@ -16,7 +16,6 @@ namespace User_Registration
             while (exit_Program != true)
             {
 
-
                 Console.WriteLine("Enter the first name : ");
                 first_Name = Console.ReadLine();
                 Match match = regex.Match(first_Name);
