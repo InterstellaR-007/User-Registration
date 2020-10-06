@@ -9,7 +9,7 @@ namespace User_Registration
         static void Main(string[] args)
         {
             String email_ID = "";
-            String pattern = @"^[a-zA-Z_\-0-9]+@[a-z]+[\.][a-z]{2,4}([\.][a-z]{2,4})?$";
+            String pattern = @"^[a-zA-Z_\-0-9]+@[a-z0-9]+[\.][a-z]{2,4}([\.][a-z]{2,4})?$";
             
             Regex regex = new Regex(pattern);
             Boolean exit_Program = false;
