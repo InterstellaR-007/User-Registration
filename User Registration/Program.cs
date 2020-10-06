@@ -9,7 +9,7 @@ namespace User_Registration
         static void Main(string[] args)
         {
             String mob_Number = "";
-            String pattern = "^[0-9]{2}[\\s]{1}[0-9]{10}$";
+            String pattern = "^[+]*[0-9]{2}[\\s][0-9]{10}";
             Regex regex = new Regex(pattern);
             Boolean exit_Program = false;
 
