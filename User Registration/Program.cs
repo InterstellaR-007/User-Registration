@@ -111,13 +111,30 @@ namespace User_Registration
             Console.WriteLine("Enter the password :");
             string password = Console.ReadLine();
 
+
+
             //Validation anonymous method for Password field
             Func<string, bool> ValidationPassword = (password) =>
             {
-                //Regex pattern accepting min 8 characters,Should have Captial letter and numeric with special character
-                Regex regex = new Regex("(?=^.{8,}$)(?=.*[A-Z]+)(?=.*[0-9]+) (?=.*[!@#$%^&*()]{1})");
-                Match match = regex.Match(password);
-                return match.Success;
+                //Regex pattern accepting min 8 characters,Should have Captial letter and numeric with atleast one special character
+                String pattern = "(?=^.{8,}$)";
+                String pattern_UpperCase = "[A-Z]+";
+                String pattern_Numeric = "[0-9]+";
+                String pattern_SpecialCharacter = "[!@#$%^&*()]{1}";
+
+                Regex regex_MinChar = new Regex(pattern);
+                Regex regex_UpperCase = new Regex(pattern_UpperCase);
+                Regex regex_Numeric = new Regex(pattern_Numeric);
+                Regex regex_SpecialCharacter = new Regex(pattern_SpecialCharacter);
+
+                //Regex regex = new Regex("(?=^.{8,}$)(?=.*[A-Z]+)(?=.*[0-9]+) (?=.*[!@#$%^&*()]{1})");
+                Match match = regex_MinChar.Match(password);
+                Match match_UpperCase = regex_UpperCase.Match(password);
+                Match match_Numeric = regex_Numeric.Match(password);
+                Match match_SpecialCharacter = regex_SpecialCharacter.Match(password);
+
+                
+                return match.Success && match_UpperCase.Success && match_Numeric.Success && match_SpecialCharacter.Success;
             };
 
             //check validation
@@ -130,7 +147,7 @@ namespace User_Registration
             user.password = password;
 
             //Print output
-            Console.WriteLine("Entered Data is:");
+            Console.WriteLine("Entered Details are: \n");
             Console.WriteLine(user.First_name);
             Console.WriteLine(user.Last_name);
             Console.WriteLine(user.phone_Number);
